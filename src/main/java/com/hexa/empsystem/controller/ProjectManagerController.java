@@ -18,13 +18,6 @@ public class ProjectManagerController {
         this.projectManagerService = projectManagerService;
     }
 
-    // Get all project managers
-    @GetMapping
-    public List<ProjectManager> getAllProjectManagers() throws IOException {
-        return projectManagerService.getAllProjectManagers();
-    }
-
-    // Add or update project managers
     @PostMapping
     public void addOrUpdateProjectManagers(@RequestBody List<ProjectManager> projectManagers) throws IOException {
         projectManagerService.addOrUpdateProjectManagers(projectManagers);

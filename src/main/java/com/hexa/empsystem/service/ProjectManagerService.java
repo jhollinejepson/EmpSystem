@@ -17,15 +17,7 @@ public class ProjectManagerService {
         this.excelService = excelService;
     }
 
-    // Method to get all project managers
-    public List<ProjectManager> getAllProjectManagers() throws IOException {
-        List<ProjectManager> projectManagers = new ArrayList<>();
-        // Logic to read project managers from Excel can be added here
-        // For now, we will return an empty list
-        return projectManagers;
-    }
 
-    // Method to add or update project managers
     public void addOrUpdateProjectManagers(List<ProjectManager> projectManagers) throws IOException {
     
         excelService.writeProjectManagerToExcel(projectManagers);

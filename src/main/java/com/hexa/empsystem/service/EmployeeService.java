@@ -24,14 +24,13 @@ public class EmployeeService {
         return employees.stream()
                 .filter(employee -> employee.getEmpId().equals(empId))
                 .findFirst()
-                .orElse(null); // Employee not found
+                .orElse(null); 
     }
 
     public ProjectManager getProjectManagerDetails(String empId) throws IOException {
         return excelService.readProjectManagerFromExcel(empId);
     }
 
-    // Method to get all employee details
     public List<EmployeeDetailsResponse> getAllEmployeeDetails() throws IOException {
         List<Employee> employees = excelService.readEmployeesFromExcel();
         List<EmployeeDetailsResponse> employeeDetailsList = new ArrayList<>();
@@ -47,7 +46,7 @@ public class EmployeeService {
                     projectManager.getManager()
                 ));
             } else {
-                // If project manager details are not found, add employee with null values for project and manager
+                
                 employeeDetailsList.add(new EmployeeDetailsResponse(
                     employee.getEmpId(),
                     employee.getEmpName(),

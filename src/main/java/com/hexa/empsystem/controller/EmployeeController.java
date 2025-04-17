@@ -29,31 +29,26 @@ public class EmployeeController {
         this.excelExportService = excelExportService;
     }
 
-    // Get employee details by ID
     @GetMapping("/{empId}")
     public Employee getEmployeeDetails(@PathVariable String empId) throws IOException {
         return employeeService.getEmployee(empId);
     }
 
-    // Get project and manager details for an employee by ID
     @GetMapping("/{empId}/project-manager")
     public ProjectManager getProjectManagerDetails(@PathVariable String empId) throws IOException {
         return employeeService.getProjectManagerDetails(empId);
     }
 
-    // Get all employee details (including project and manager)
     @GetMapping("/all")
     public List<EmployeeDetailsResponse> getAllEmployeeDetails() throws IOException {
         return employeeService.getAllEmployeeDetails();
     }
 
-    // Export all employees to Excel
     @GetMapping("/export")
     public void exportEmployeesToExcel(HttpServletResponse response) throws IOException {
         excelExportService.exportToExcel(response);
     }
 
-    // Write employees to Excel
     @PostMapping("/write")
     public void writeEmployeesToExcel(@RequestBody List<Employee> employees) throws IOException {
         excelExportService.writeEmployeesToExcel(employees);

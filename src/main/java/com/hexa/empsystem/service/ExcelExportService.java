@@ -63,7 +63,6 @@ public class ExcelExportService {
         headerRow.createCell(1).setCellValue("Emp Name");
         headerRow.createCell(2).setCellValue("Emp Email");
 
-        // Fill data
         int rowCount = 1;
         for (Employee employee : employees) {
             Row row = sheet.createRow(rowCount++);
@@ -72,11 +71,9 @@ public class ExcelExportService {
             row.createCell(2).setCellValue(employee.getEmpEmail());
         }
 
-        // Set response headers
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=employees.xlsx");
 
-        // Write to response output stream
         ServletOutputStream outputStream = response.getOutputStream();
         workbook.write(outputStream);
         workbook.close();
